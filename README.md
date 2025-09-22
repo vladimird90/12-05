@@ -7,7 +7,7 @@
 **Решение:**
 
 ```sql
-SELECT SUM(INDEX_LENGTH) / SUM(DATA_LENGTH ) * 100 AS prox_index_data
+SELECT ROUND(SUM(INDEX_LENGTH) / (SUM(INDEX_LENGTH + SUM(DATA_LENGTH)) * 100, 2) AS prox_index_data
 FROM information_schema.TABLES
 WHERE TABLE_SCHEMA = 'sakila';
 ```
